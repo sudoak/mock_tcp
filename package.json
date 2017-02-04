@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/sudoak/mock_tcp/issues"
   },
-  "homepage": "https://github.com/sudoak/mock_tcp#readme"
+  "homepage": "https://github.com/sudoak/mock_tcp#readme",
+  "dependencies": {
+    "random-js": "^1.0.8",
+    "tofixed": "^1.0.0"
+  }
 }
