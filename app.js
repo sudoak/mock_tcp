@@ -13,7 +13,7 @@ var client = new net.Socket();
 setInterval(()=>{
 	client.connect(5511, ip , function() {
 		console.log('Connected');
-		var dat = "$00,SIPL,"+toFixed(random.real(100, 300),2)+","+toFixed(random.real(1, 100),2)+","+toFixed(random.real(1, 100),2)+","+toFixed(random.real(1, 100),2)+","+toFixed(random.real(1, 100),2)+","+toFixed(random.real(1, 100),2)+"#";
+		var dat = "$00,ITPL,"+toFixed(random.real(100, 300),2)+","+toFixed(random.real(1, 100),2)+","+toFixed(random.real(1, 100),2)+","+toFixed(random.real(1, 100),2)+","+toFixed(random.real(1, 100),2)+","+toFixed(random.real(1, 100),2)+"#";
 		client.write(dat);
 		client.destroy();
 	})	
