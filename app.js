@@ -1,9 +1,17 @@
 var net = require('net');
 var random = require("random-js")();
 var toFixed = require('tofixed');
+const commandLineArgs = require('command-line-args')
+ 
+const optionDefinitions = [
+  { name: 'ip', alias: 'i', type: String },
+]
+
+var ip = commandLineArgs(optionDefinitions).ip
+
 var client = new net.Socket();
 setInterval(()=>{
-	client.connect(5511, '127.0.0.1', function() {
+	client.connect(5511, ip , function() {
 		console.log('Connected');
 		var dat = "$00,SIPL,"+toFixed(random.real(100, 300),2)+","+toFixed(random.real(1, 100),2)+","+toFixed(random.real(1, 100),2)+","+toFixed(random.real(1, 100),2)+","+toFixed(random.real(1, 100),2)+","+toFixed(random.real(1, 100),2)+"#";
 		client.write(dat);
