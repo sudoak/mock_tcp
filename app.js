@@ -9,19 +9,23 @@ const optionDefinitions = [
 
 var ip = commandLineArgs(optionDefinitions).ip
 
-var client = new net.Socket();
-setInterval(()=>{
-	client.connect(5511, ip , function() {
-		console.log('Connected');
-		var dat = "$00,ITPL,"+toFixed(random.real(100, 300),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+"#";
-		client.write(dat);
-		client.destroy();
-	})	
-},15000)
+if(ip){
+	var client = new net.Socket();
+	setInterval(()=>{
+		client.connect(5511, ip , function() {
+			console.log('Connected');
+			var dat = "$00,ITPL,"+toFixed(random.real(100, 300),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+"#";
+			client.write(dat);
+			client.destroy();
+		})	
+	},15000)
 
-client.on('error', (err)=>{
-	console.log(err)
-})
-client.on('close', function() {
-	console.log('Connection closed');
-});
+	client.on('error', (err)=>{
+		console.log(err)
+	})
+	client.on('close', function() {
+		console.log('Connection closed');
+	});
+}else{
+	console.log("Please Enter an IP address\n")
+}
