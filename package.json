@@ -1,6 +1,6 @@
 {
   "name": "mock_tcp",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Mock Tcp",
   "main": "app.js",
   "scripts": {
