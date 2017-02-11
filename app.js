@@ -5,20 +5,22 @@ const commandLineArgs = require('command-line-args')
  
 const optionDefinitions = [
   { name: 'ip', alias: 'i', type: String },
+  { name: 'port', alias: 'p', type: String}
 ]
 
 var ip = commandLineArgs(optionDefinitions).ip
+var port = commandLineArgs(optionDefinitions).port
 
-if(ip){
+if(ip && port){
 	var client = new net.Socket();
 	setInterval(()=>{
-		client.connect(5511, ip , function() {
+		client.connect(port, ip , function() {
 			console.log('Connected');
-			var dat = "$00,ITPL,"+toFixed(random.real(100, 300),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+"#";
+			var dat = "$00,SIPL,"+toFixed(random.real(100, 300),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+"#";
 			client.write(dat);
 			client.destroy();
 		})	
-	},15000)
+	},9000)
 
 	client.on('error', (err)=>{
 		console.log(err)
@@ -27,5 +29,5 @@ if(ip){
 		console.log('Connection closed');
 	});
 }else{
-	console.log("Please Enter an IP address\n")
+	console.log("Please Enter an IP | PORT\n")
 }
