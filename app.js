@@ -16,8 +16,10 @@ if(ip && port){
 	setInterval(()=>{
 		client.connect(port, ip , function() {
 			console.log('Connected');
-			var dat = "$00,SIPL,"+toFixed(random.real(100, 300),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+"#";
-			client.write(dat);
+			var adat = "$00,ITPL,"+toFixed(random.real(100, 300),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+"#";
+			var bdat = "$00,TTPL,"+toFixed(random.real(100, 300),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+"#";
+			client.write(adat);
+			client.write(bdat);
 			client.destroy();
 		})	
 	},9000)
