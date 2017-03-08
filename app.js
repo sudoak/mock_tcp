@@ -1,7 +1,7 @@
 var net = require('net'),
 	random = require("random-js")(),
 	toFixed = require('tofixed')
-const commandLineArgs = require('command-line-args'),
+const commandLineArgs = require('command-line-args')
 	
 const optionDefinitions = [
   { name: 'ip', alias: 'i', type: String },
