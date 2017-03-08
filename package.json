@@ -22,6 +22,8 @@
   "homepage": "https://github.com/sudoak/mock_tcp#readme",
   "dependencies": {
     "command-line-args": "^4.0.1",
+    "draftlog": "^1.0.9",
+    "lme": "^1.5.0",
     "random-js": "^1.0.8",
     "tofixed": "^1.0.0"
   }

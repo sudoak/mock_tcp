@@ -1,26 +1,25 @@
-var net = require('net');
-var random = require("random-js")();
-var toFixed = require('tofixed');
-const commandLineArgs = require('command-line-args')
- 
+var net = require('net'),
+	random = require("random-js")(),
+	toFixed = require('tofixed')
+const commandLineArgs = require('command-line-args'),
+	
 const optionDefinitions = [
   { name: 'ip', alias: 'i', type: String },
-  { name: 'port', alias: 'p', type: String}
+  { name: 'port', alias: 'p', type: String},
+  { name: 'message', alias: 'm', type: String}
 ]
 
-var ip = commandLineArgs(optionDefinitions).ip
-var port = commandLineArgs(optionDefinitions).port
+var ip = commandLineArgs(optionDefinitions).ip,
+	port = commandLineArgs(optionDefinitions).port,
+	message = commandLineArgs(optionDefinitions).message
 
 if(ip && port){
 	var client = new net.Socket();
 	setInterval(()=>{
 		client.connect(port, ip , function() {
-			console.log('Connected');
-			var adat = "$00,ITPL,"+toFixed(random.real(100, 300),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+"#";
-			var bdat = "$00,TTPL,"+toFixed(random.real(100, 300),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+","+toFixed(random.real(1, 10),2)+"#";
-			client.write(adat);
-			client.write(bdat);
-			client.destroy();
+			console.log('Connected')
+			client.write(message)
+			client.destroy()
 		})	
 	},9000)
 
