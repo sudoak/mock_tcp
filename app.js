@@ -7,7 +7,8 @@ const getUsage = require('command-line-usage')
 const optionDefinitions = [
   { name: 'ip', alias: 'i', type: String },
   { name: 'port', alias: 'p', type: String},
-  { name: 'message', alias: 'm', type: String}
+  { name: 'message', alias: 'm', type: String},
+	{ name: 'help', alias: 'h', type: String}
 ]
 const usage = getUsage([
   {
@@ -26,7 +27,7 @@ const usage = getUsage([
     content: 'Project home: [underline]{https://github.com/sudoak/mock_tcp}'
   }
 ])
-console.log(usage)
+//console.log(usage)
 
 var ip = commandLineArgs(optionDefinitions).ip,
 	port = commandLineArgs(optionDefinitions).port,
@@ -49,5 +50,5 @@ if(ip && port){
 		console.log('Connection closed');
 	});
 }else{
-	console.log("Please Enter an IP | PORT\n")
+	console.log(usage)
 }
