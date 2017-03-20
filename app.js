@@ -1,6 +1,4 @@
-var net = require('net'),
-	random = require("random-js")(),
-	toFixed = require('tofixed')
+var net = require('net')
 const commandLineArgs = require('command-line-args')
 const getUsage = require('command-line-usage')
 
